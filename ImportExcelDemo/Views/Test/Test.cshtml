@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+}
+<style>
+    .error{
+        color:orangered;
+        display:none;
+    }
+</style>
+<br /><br />
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group">
+        <table>
+            <thead>
+                <tr>
+                    <td></td>
+                    <td>Member Qualifications</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="A" name="chbData" value="A" /> A
+                    </td>
+                    <td>
+                        <input type="text" class="" id="txt_A" name="txt_A" />
+                        <span class="error"  id="span_A">Please Enter.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="B" name="chbData" value="B"  /> B
+                    </td>
+                    <td>
+                        <input type="text" class="" id="txt_B" name="txt_B" />
+                        <span class="error"  id="span_B">Please Enter.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="C" name="chbData" value="C"  /> C
+                    </td>
+                    <td>
+                        <input type="text" class="" id="txt_C" name="txt_C" />
+                        <span class="error"  id="span_C">Please Enter.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="D" name="chbData" value="D"  /> D
+                    </td>
+                    <td>
+                        <input type="text" class="" id="txt_D" name="txt_D" />
+                        <span class="error"  id="span_D">Please Enter.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="E" name="chbData" value="E"  /> E
+                    </td>
+                    <td>
+                        <input type="text" class="" id="txt_E" name="txt_E" />
+                        <span class="error"  id="span_E">Please Enter.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="F" name="chbData" value="F"  /> F
+                    </td>
+                    <td>
+                        <input type="text" class="" id="txt_F" name="txt_F" />
+                        <span class="error" id="span_F">Please Enter.</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+        <button type="button" onclick="checkdata()">Check</button>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.error').hide();
+    });
+    function checkdata() {
+        $('.error').hide();
+        var myArray = [];
+        $("input:checkbox[name=chbData]:checked").each(function () {
+            
+            var idVal = $(this).val();
+            var textVal = $("#txt_" + idVal).val();
+           
+            if (textVal == null || textVal == '')
+            {
+                alert('if');
+                myArray = [];
+                //$('.error').show();
+                $("#span_" + idVal).show();
+                $("#txt_" + idVal).focus();
+                return false;
+            }
+            else {
+                
+                myArray.push(idVal + '#' + textVal);
+            }
+           
+        });
+        alert(myArray);
+    }
+</script>
